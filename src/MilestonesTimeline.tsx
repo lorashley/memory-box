@@ -1,16 +1,23 @@
-import React from 'react';
 import { Timeline, TimelineItem, TimelineSeparator, TimelineDot, TimelineContent, TimelineConnector } from '@mui/lab';
 import { Typography } from '@mui/material';
 
+enum Tag {
+  first = 'FIRST'
+}
+
+export type Milestone = {
+  title: string
+  date: string
+  description: string
+  tags?: Tag[] 
+}
+
 type Props = {
+  milestones: Milestone[]
   searchTerm: string | null
 }
-const MilestonesTimeline = ({searchTerm}: Props) => {
-  const milestones = [
-    { title: 'First Smile', date: '2023-01-15', description: 'Smiled at dad for the first time!' },
-    { title: 'First Word', date: '2023-06-10', description: 'Said "Mama" for the first time!' },
-    { title: 'First Step', date: '2023-09-05', description: 'Walked across the living room.' },
-  ];
+
+const MilestonesTimeline = ({milestones, searchTerm}: Props) => {
 
   const searchedMilestones = searchTerm ? milestones.filter((milestone) => 
     milestone.title.includes(searchTerm) || milestone.description.includes(searchTerm)
