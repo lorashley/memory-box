@@ -1,19 +1,20 @@
-import './App.css'
-import Button from './components/Button'
-import SegmentedControl from './components/SegmentedControl'
+import { useState } from 'react';
+import Header from './Header'
+import MilestonesTimeline, { Milestone } from './MilestonesTimeline';
+
+
+const milestones: Milestone [] = [
+  { title: 'First Smile', date: '2023-01-15', description: 'Smiled at dad for the first time!' },
+  { title: 'First Word', date: '2023-06-10', description: 'Said "Mama" for the first time!' },
+  { title: 'First Step', date: '2023-09-05', description: 'Walked across the living room.' },
+];
 
 function App() {
-
+  const [searchTerm, setSearchTerm] = useState<string|null>(null)
   return (
     <>
-      <h1>Diamond Simulator</h1>
-      <SegmentedControl toggleButtons={['GIA Import', 'Manual Entry']} onChange={() => console.log('clicked')}/>
-      <div className="card">
-
-      </div>
-      <p className="read-the-docs">
-        Hobby app created for the diamond shopping girlies
-      </p>
+      <Header setSearchTerm={setSearchTerm}/>
+      <MilestonesTimeline milestones={milestones} searchTerm={searchTerm}/>
     </>
   )
 }
