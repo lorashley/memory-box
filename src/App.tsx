@@ -1,6 +1,9 @@
 import { useCallback, useState } from 'react'
 import Header from './Header'
 import MilestonesTimeline, { Milestone } from './MilestonesTimeline'
+import AppDrawer from './AppDrawer'
+import Box from '@mui/material/Box'
+import CssBaseline from '@mui/material/CssBaseline'
 
 const milestones: Milestone[] = [
   {
@@ -29,11 +32,27 @@ function App() {
     [_setSearchTerm],
   )
 
+  const [isOpen, setOpen] = useState(true)
+
+  const handleDrawerOpen = () => {
+    setOpen(true)
+  }
+
+  const handleDrawerClose = () => {
+    setOpen(false)
+  }
+
   return (
-    <>
-      <Header setSearchTerm={setSearchTerm} />
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <Header
+        setSearchTerm={setSearchTerm}
+        handleDrawerOpen={handleDrawerOpen}
+        isOpen={isOpen}
+      />
+      <AppDrawer isOpen={isOpen} handleDrawerClose={handleDrawerClose} />
       <MilestonesTimeline milestones={milestones} searchTerm={searchTerm} />
-    </>
+    </Box>
   )
 }
 
