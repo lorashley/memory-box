@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Header from './Header'
 import MilestonesTimeline, { Milestone } from './MilestonesTimeline';
 
@@ -10,7 +10,11 @@ const milestones: Milestone [] = [
 ];
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState<string|null>(null)
+  const [searchTerm, _setSearchTerm] = useState<string|null>(null)
+  const setSearchTerm = useCallback((searchTerm: string) => {
+    _setSearchTerm(searchTerm.toLowerCase())
+  }, [_setSearchTerm])
+
   return (
     <>
       <Header setSearchTerm={setSearchTerm}/>

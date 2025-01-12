@@ -20,8 +20,9 @@ type Props = {
 const MilestonesTimeline = ({milestones, searchTerm}: Props) => {
 
   const searchedMilestones = searchTerm ? milestones.filter((milestone) => 
-    milestone.title.includes(searchTerm) || milestone.description.includes(searchTerm)
-  ): milestones
+    milestone.title.toLowerCase().includes(searchTerm) || 
+    milestone.description.toLowerCase().includes(searchTerm)
+  ) : milestones
 
   const hasMilestones = milestones.length !== 0
   const isEmpty = searchedMilestones.length === 0
