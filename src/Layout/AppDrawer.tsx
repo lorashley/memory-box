@@ -1,11 +1,8 @@
-import { styled, useTheme } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import Drawer from '@mui/material/Drawer'
 import { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
-import IconButton from '@mui/material/IconButton'
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
@@ -61,9 +58,7 @@ const ListGroup = ({ title, icon }: ListGroupProps) => (
   </ListItem>
 )
 
-const AppDrawer = ({ isOpen, handleDrawerClose }: Props) => {
-  const theme = useTheme()
-
+const AppDrawer = ({ isOpen }: Props) => {
   return (
     <Drawer
       sx={{
@@ -74,18 +69,18 @@ const AppDrawer = ({ isOpen, handleDrawerClose }: Props) => {
           boxSizing: 'border-box',
         },
       }}
-      variant='persistent'
+      variant='permanent'
       anchor='left'
       open={isOpen}
     >
       <DrawerHeader>
-        <IconButton onClick={handleDrawerClose}>
+        {/* <IconButton onClick={handleDrawerClose}>
           {theme.direction === 'ltr' ? (
             <ChevronLeftIcon />
           ) : (
             <ChevronRightIcon />
           )}
-        </IconButton>
+        </IconButton> */}
       </DrawerHeader>
       <Divider />
       <List>
