@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import MilestonesList from '../components/Milestones'
 import { useState } from 'react'
-import { Milestone } from '../components/Milestones/types'
+import { Milestone } from '../components/Milestone/types'
 
 type Props = {
   searchTerm: string | null

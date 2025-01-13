@@ -7,9 +7,9 @@ import {
   Typography,
 } from '@mui/material'
 import React, { Fragment } from 'react'
-import { Milestone } from './types'
+import { Milestone } from '../Milestone/types'
 import { FavoriteFilled, StyledListItem } from './styled'
-import { getTagChipColor } from './utils'
+import { getTagChipColor } from '../Tag/utils'
 import useMilestones from './hooks/useMilestones'
 
 type Props = {

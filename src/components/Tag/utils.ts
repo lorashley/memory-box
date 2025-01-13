@@ -1,4 +1,4 @@
-import { Tag, TAG_GROUPS } from './types'
+import { Tag, TAG_GROUPS } from '../Tag/types'
 
 export const getTagChipColor = (tag: Tag) => {
   const group = TAG_GROUPS.find((group) => group.tags.includes(tag))

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import { MILESTONES } from '../constants'
-import { Milestone } from '../types'
+import { Milestone } from '../../Milestone/types'
 
 export type addMilestone = (milestone: Milestone) => void
 export type removeMilestone = (milestoneId: string) => void

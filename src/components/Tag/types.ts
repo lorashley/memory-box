@@ -1,12 +1,3 @@
-export type Milestone = {
-  id: string
-  title: string
-  date: string
-  description: string
-  tags?: Tag[]
-  isFavorite?: boolean
-}
-
 export enum Tag {
   // EMOTIONS
   FUNNY = 'FUNNY',
@@ -43,7 +34,7 @@ export enum Tag {
   FIRST = 'FIRST',
 }
 
-export enum TagCategory {
+enum TagCategory {
   EMOTION = 'EMOTION',
   ACTIVITY = 'ACTIVITY',
   SUBJECT = 'SUBJECT',

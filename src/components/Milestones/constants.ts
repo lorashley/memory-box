@@ -1,4 +1,5 @@
-import { Milestone, Tag } from './types'
+import { Milestone } from '../Milestone/types'
+import { Tag } from '../Tag/types'
 
 export const MILESTONES: Milestone[] = [
   {
