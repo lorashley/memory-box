@@ -1,7 +1,15 @@
-import { Divider, List, ListItemText, Typography } from '@mui/material'
+import {
+  Box,
+  Chip,
+  Divider,
+  List,
+  ListItemText,
+  Typography,
+} from '@mui/material'
 import React, { Fragment } from 'react'
 import { Milestone } from './types'
 import { StyledListItem } from './styled'
+import { getTagChipColor } from './utils'
 
 type Props = {
   milestones: Milestone[]
@@ -42,7 +50,7 @@ const MilestonesList = ({
               >
                 <ListItemText
                   primary={
-                    <React.Fragment>
+                    <>
                       <div>{milestone.title}</div>
                       <Typography
                         component='span'
@@ -54,7 +62,7 @@ const MilestonesList = ({
                       >
                         {milestone.date}
                       </Typography>
-                    </React.Fragment>
+                    </>
                   }
                   slotProps={{
                     primary: {
@@ -63,8 +71,26 @@ const MilestonesList = ({
                       display: 'flex',
                       flexDirection: 'row',
                     },
+                    secondary: {
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 0.5,
+                    },
                   }}
-                  secondary={milestone.description}
+                  secondary={
+                    <>
+                      {milestone.description}
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                        {milestone.tags?.map((tag) => (
+                          <Chip
+                            label={tag}
+                            color={getTagChipColor(tag)}
+                            size='small'
+                          />
+                        ))}
+                      </Box>
+                    </>
+                  }
                 />
               </StyledListItem>
               <Divider variant='inset' component='li' />
