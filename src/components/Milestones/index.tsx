@@ -1,11 +1,4 @@
-import {
-  Box,
-  Chip,
-  Divider,
-  List,
-  ListItemText,
-  Typography,
-} from '@mui/material'
+import { Box, Divider, List, ListItemText, Typography } from '@mui/material'
 import { Fragment } from 'react'
 import { Milestone } from '../Milestone/types'
 import { StyledListItem } from './styled'
