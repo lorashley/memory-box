@@ -84,7 +84,11 @@ type Props = {
   isOpen: boolean
 }
 
-const Header = ({ setSearchTerm, handleDrawerOpen, isOpen }: Props) => {
+const AppBarWithSearch = ({
+  setSearchTerm,
+  handleDrawerOpen,
+  isOpen,
+}: Props) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='fixed' isOpen={isOpen}>
@@ -125,4 +129,4 @@ const Header = ({ setSearchTerm, handleDrawerOpen, isOpen }: Props) => {
   )
 }
 
-export default Header
+export default AppBarWithSearch

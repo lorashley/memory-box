@@ -6,7 +6,7 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material'
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 import { Milestone } from '../Milestone/types'
 import { FavoriteFilled, StyledListItem } from './styled'
 import { getTagChipColor } from '../Tag/utils'
@@ -14,13 +14,13 @@ import useMilestones from './hooks/useMilestones'
 
 type Props = {
   searchTerm: string | null
-  selectedMilestone: Milestone | null
+  selectedMilestoneId: string | null
   setSelectedMilestone: (milestone: Milestone) => void
 }
 
 const MilestonesList = ({
   searchTerm,
-  selectedMilestone,
+  selectedMilestoneId,
   setSelectedMilestone,
 }: Props) => {
   const { milestones } = useMilestones()
@@ -47,7 +47,7 @@ const MilestonesList = ({
               <StyledListItem
                 alignItems='flex-start'
                 onClick={() => setSelectedMilestone(milestone)}
-                isSelected={selectedMilestone?.id === milestone.id}
+                isSelected={selectedMilestoneId === milestone.id}
               >
                 <ListItemText
                   primary={

@@ -1,32 +1,39 @@
 import { Box } from '@mui/material'
-import MilestonesList from '../components/Milestones'
 import { useState } from 'react'
 import { Milestone } from '../components/Milestone/types'
+import MilestoneDetails from '../components/Milestone'
+import MainColumn from './MainColumn'
 
 type Props = {
-  searchTerm: string | null
+  isOpen: boolean
+  openDrawer: () => void
 }
 
-const Body = ({ searchTerm }: Props) => {
+const Body = ({ isOpen, openDrawer }: Props) => {
   const [selectedMilestone, setSelectedMilestone] = useState<Milestone | null>(
     null,
   )
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        pt: 8,
-        alignContent: 'flex-start',
-      }}
-    >
-      <MilestonesList
-        searchTerm={searchTerm}
-        selectedMilestone={selectedMilestone}
-        setSelectedMilestone={setSelectedMilestone}
-      />
-    </Box>
+    <>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          width: '100%',
+          pt: 8,
+          alignContent: 'flex-start',
+        }}
+      >
+        <MainColumn
+          selectedMilestoneId={selectedMilestone?.id || null}
+          setSelectedMilestone={setSelectedMilestone}
+          isOpen={isOpen}
+          openDrawer={openDrawer}
+        />
+
+        <MilestoneDetails milestone={selectedMilestone} />
+      </Box>
+    </>
   )
 }
 export default Body
