@@ -10,15 +10,34 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
-import MailIcon from '@mui/icons-material/Mail'
-
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ListIcon from '@mui/icons-material/List'
+import FlightIcon from '@mui/icons-material/Flight'
+import MoodIcon from '@mui/icons-material/Mood'
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
+import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver'
+import PoolIcon from '@mui/icons-material/Pool'
+import SchoolIcon from '@mui/icons-material/School'
 export const drawerWidth = 240
 
 interface Props extends MuiAppBarProps {
   isOpen?: boolean
   handleDrawerClose: () => void
 }
+
+const MAIN_CATEGORIES = [
+  { title: 'All Milestones', icon: <ListIcon /> },
+  { title: 'Favorites', icon: <FavoriteIcon /> },
+]
+
+const SECONDARY_CATEGORIES = [
+  { title: 'Firsts', icon: <WorkspacePremiumIcon /> },
+  { title: 'Emotions', icon: <MoodIcon /> },
+  { title: 'Language', icon: <RecordVoiceOverIcon /> },
+  { title: 'Physical', icon: <PoolIcon /> },
+  { title: 'School', icon: <SchoolIcon /> },
+  { title: 'Travel', icon: <FlightIcon /> },
+]
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -28,6 +47,19 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }))
+
+type ListGroupProps = {
+  title: string
+  icon: React.ReactNode
+}
+const ListGroup = ({ title, icon }: ListGroupProps) => (
+  <ListItem key={title} disablePadding>
+    <ListItemButton>
+      <ListItemIcon>{icon}</ListItemIcon>
+      <ListItemText primary={title} />
+    </ListItemButton>
+  </ListItem>
+)
 
 const AppDrawer = ({ isOpen, handleDrawerClose }: Props) => {
   const theme = useTheme()
@@ -57,28 +89,14 @@ const AppDrawer = ({ isOpen, handleDrawerClose }: Props) => {
       </DrawerHeader>
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {MAIN_CATEGORIES.map(({ title, icon }) => (
+          <ListGroup title={title} icon={icon} />
         ))}
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {SECONDARY_CATEGORIES.map(({ title, icon }) => (
+          <ListGroup title={title} icon={icon} />
         ))}
       </List>
     </Drawer>
