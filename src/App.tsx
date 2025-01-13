@@ -3,7 +3,7 @@ import Header from './Header'
 import MilestonesTimeline, { Milestone } from './MilestonesTimeline'
 import AppDrawer from './AppDrawer'
 import Box from '@mui/material/Box'
-import CssBaseline from '@mui/material/CssBaseline'
+import useSwitch from './hooks/useSwitch'
 
 const milestones: Milestone[] = [
   {
@@ -32,26 +32,27 @@ function App() {
     [_setSearchTerm],
   )
 
-  const [isOpen, setOpen] = useState(true)
-
-  const handleDrawerOpen = () => {
-    setOpen(true)
-  }
-
-  const handleDrawerClose = () => {
-    setOpen(false)
-  }
+  const [isOpen, openDrawer, closeDrawer] = useSwitch(true)
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
       <Header
         setSearchTerm={setSearchTerm}
-        handleDrawerOpen={handleDrawerOpen}
+        handleDrawerOpen={openDrawer}
         isOpen={isOpen}
       />
-      <AppDrawer isOpen={isOpen} handleDrawerClose={handleDrawerClose} />
-      <MilestonesTimeline milestones={milestones} searchTerm={searchTerm} />
+      <AppDrawer isOpen={isOpen} handleDrawerClose={closeDrawer} />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          p: 8,
+          alignContent: 'flex-start',
+        }}
+      >
+        <MilestonesTimeline milestones={milestones} searchTerm={searchTerm} />
+      </Box>
     </Box>
   )
 }
