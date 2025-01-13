@@ -1,6 +1,5 @@
 import { Box } from '@mui/material'
 import MilestonesList from '../components/Milestones'
-import { MILESTONES } from '../components/Milestones/constants'
 import { useState } from 'react'
 import { Milestone } from '../components/Milestones/types'
 
@@ -23,7 +22,6 @@ const Body = ({ searchTerm }: Props) => {
       }}
     >
       <MilestonesList
-        milestones={MILESTONES}
         searchTerm={searchTerm}
         selectedMilestone={selectedMilestone}
         setSelectedMilestone={setSelectedMilestone}

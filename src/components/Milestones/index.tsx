@@ -10,20 +10,21 @@ import React, { Fragment } from 'react'
 import { Milestone } from './types'
 import { StyledListItem } from './styled'
 import { getTagChipColor } from './utils'
+import useMilestones from './hooks/useMilestones'
 
 type Props = {
-  milestones: Milestone[]
   searchTerm: string | null
   selectedMilestone: Milestone | null
   setSelectedMilestone: (milestone: Milestone) => void
 }
 
 const MilestonesList = ({
-  milestones,
   searchTerm,
   selectedMilestone,
   setSelectedMilestone,
 }: Props) => {
+  const { milestones } = useMilestones()
+
   const searchedMilestones = searchTerm
     ? milestones.filter(
         (milestone) =>
