@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box'
 import { type Milestone } from './types'
+import FavoriteHeart from '../FavoriteHeart'
 
 type Props = {
   milestone: Milestone | null
@@ -18,10 +19,7 @@ const Milestone = ({ milestone }: Props) => {
     >
       {milestone ? (
         <>
-          {milestone.title}
-          {milestone.date}
-          {milestone.description}
-          {milestone.tags}
+          <FavoriteHeart isFavorite={milestone.isFavorite} />
           {milestone.isFavorite}
         </>
       ) : (

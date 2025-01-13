@@ -8,9 +8,9 @@ import {
 } from '@mui/material'
 import { Fragment } from 'react'
 import { Milestone } from '../Milestone/types'
-import { FavoriteFilled, StyledListItem } from './styled'
-import { getTagChipColor } from '../Tag/utils'
+import { StyledListItem } from './styled'
 import useMilestones from './hooks/useMilestones'
+import FavoriteHeart from '../FavoriteHeart'
 
 type Props = {
   searchTerm: string | null
@@ -52,7 +52,7 @@ const MilestonesList = ({
                 <ListItemText
                   primary={
                     <>
-                      {milestone.isFavorite && <FavoriteFilled />}
+                      {milestone.isFavorite && <FavoriteHeart />}
                       <div>{milestone.title}</div>
                       <Typography
                         component='span'
