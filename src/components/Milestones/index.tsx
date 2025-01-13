@@ -1,19 +1,21 @@
-import {
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from '@mui/material'
+import { Divider, List, ListItemText, Typography } from '@mui/material'
 import React, { Fragment } from 'react'
 import { Milestone } from './types'
+import { StyledListItem } from './styled'
 
 type Props = {
   milestones: Milestone[]
   searchTerm: string | null
+  selectedMilestone: Milestone | null
+  setSelectedMilestone: (milestone: Milestone) => void
 }
 
-const MilestonesList = ({ milestones, searchTerm }: Props) => {
+const MilestonesList = ({
+  milestones,
+  searchTerm,
+  selectedMilestone,
+  setSelectedMilestone,
+}: Props) => {
   const searchedMilestones = searchTerm
     ? milestones.filter(
         (milestone) =>
@@ -33,23 +35,38 @@ const MilestonesList = ({ milestones, searchTerm }: Props) => {
         <>
           {searchedMilestones.map((milestone, index) => (
             <Fragment key={index}>
-              <ListItem alignItems='flex-start'>
+              <StyledListItem
+                alignItems='flex-start'
+                onClick={() => setSelectedMilestone(milestone)}
+                isSelected={selectedMilestone?.id === milestone.id}
+              >
                 <ListItemText
-                  primary={milestone.title}
-                  secondary={
+                  primary={
                     <React.Fragment>
+                      <div>{milestone.title}</div>
                       <Typography
                         component='span'
                         variant='body2'
-                        sx={{ color: 'text.primary', display: 'inline' }}
+                        sx={{
+                          color: 'text.secondary',
+                          display: 'inline',
+                        }}
                       >
                         {milestone.date}
                       </Typography>
-                      {milestone.description}
                     </React.Fragment>
                   }
+                  slotProps={{
+                    primary: {
+                      variant: 'h6',
+                      justifyContent: 'space-between',
+                      display: 'flex',
+                      flexDirection: 'row',
+                    },
+                  }}
+                  secondary={milestone.description}
                 />
-              </ListItem>
+              </StyledListItem>
               <Divider variant='inset' component='li' />
             </Fragment>
           ))}

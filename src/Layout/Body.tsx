@@ -1,12 +1,17 @@
 import { Box } from '@mui/material'
 import MilestonesList from '../components/Milestones'
 import { MILESTONES } from '../components/Milestones/constants'
+import { useState } from 'react'
+import { Milestone } from '../components/Milestones/types'
 
 type Props = {
   searchTerm: string | null
 }
 
 const Body = ({ searchTerm }: Props) => {
+  const [selectedMilestone, setSelectedMilestone] = useState<Milestone | null>(
+    null,
+  )
   return (
     <Box
       sx={{
@@ -17,7 +22,12 @@ const Body = ({ searchTerm }: Props) => {
         alignContent: 'flex-start',
       }}
     >
-      <MilestonesList milestones={MILESTONES} searchTerm={searchTerm} />
+      <MilestonesList
+        milestones={MILESTONES}
+        searchTerm={searchTerm}
+        selectedMilestone={selectedMilestone}
+        setSelectedMilestone={setSelectedMilestone}
+      />
     </Box>
   )
 }
