@@ -8,7 +8,7 @@ import {
 } from '@mui/material'
 import React, { Fragment } from 'react'
 import { Milestone } from './types'
-import { StyledListItem } from './styled'
+import { FavoriteFilled, StyledListItem } from './styled'
 import { getTagChipColor } from './utils'
 import useMilestones from './hooks/useMilestones'
 
@@ -52,6 +52,7 @@ const MilestonesList = ({
                 <ListItemText
                   primary={
                     <>
+                      {milestone.isFavorite && <FavoriteFilled />}
                       <div>{milestone.title}</div>
                       <Typography
                         component='span'

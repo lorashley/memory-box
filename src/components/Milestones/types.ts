@@ -4,6 +4,7 @@ export type Milestone = {
   date: string
   description: string
   tags?: Tag[]
+  isFavorite?: boolean
 }
 
 export enum Tag {

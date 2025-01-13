@@ -28,6 +28,7 @@ export const MILESTONES: Milestone[] = [
     date: '2023-10-01',
     description: 'Said "Chicken Guggets" instead of "Chicken Nuggets"!',
     tags: [Tag.FUNNY, Tag.LANGUAGE],
+    isFavorite: true,
   },
   {
     id: '5',
