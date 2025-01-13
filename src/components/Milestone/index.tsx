@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box'
 import { type Milestone } from './types'
+import Tag from '../Tag'
 import FavoriteHeart from '../FavoriteHeart'
 
 type Props = {
@@ -20,7 +21,8 @@ const Milestone = ({ milestone }: Props) => {
       {milestone ? (
         <>
           <FavoriteHeart isFavorite={milestone.isFavorite} />
-          {milestone.isFavorite}
+            {milestone.tags?.map((tag, index) => <Tag key={index} tag={tag} />)}
+          </TagsOuter>
         </>
       ) : (
         'Select a milestone to view details'

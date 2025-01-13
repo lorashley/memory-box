@@ -10,6 +10,7 @@ import { Fragment } from 'react'
 import { Milestone } from '../Milestone/types'
 import { StyledListItem } from './styled'
 import useMilestones from './hooks/useMilestones'
+import Tag from '../Tag'
 import FavoriteHeart from '../FavoriteHeart'
 
 type Props = {
@@ -84,11 +85,7 @@ const MilestonesList = ({
                       {milestone.description}
                       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                         {milestone.tags?.map((tag) => (
-                          <Chip
-                            label={tag}
-                            color={getTagChipColor(tag)}
-                            size='small'
-                          />
+                          <Tag tag={tag} key={tag} />
                         ))}
                       </Box>
                     </>
