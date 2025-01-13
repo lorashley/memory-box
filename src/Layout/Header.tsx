@@ -107,7 +107,7 @@ const Header = ({ setSearchTerm, handleDrawerOpen, isOpen }: Props) => {
             component='div'
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Baby Steps
+            Memory Box
           </Typography>
           <Search>
             <SearchIconWrapper>
