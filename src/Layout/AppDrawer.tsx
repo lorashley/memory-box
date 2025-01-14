@@ -15,6 +15,8 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver'
 import PoolIcon from '@mui/icons-material/Pool'
 import SchoolIcon from '@mui/icons-material/School'
+
+import memoryBoxLogo from '../assets/Logo.svg'
 export const drawerWidth = 240
 
 interface Props extends MuiAppBarProps {
@@ -39,10 +41,10 @@ const SECONDARY_CATEGORIES = [
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  padding: theme.spacing(0, 1),
+  padding: theme.spacing(1, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
+  justifyContent: 'center',
 }))
 
 type ListGroupProps = {
@@ -67,7 +69,6 @@ const AppDrawer = ({ isOpen }: Props) => {
         flexShrink: 0,
         '& .MuiDrawer-paper': {
           backgroundColor: theme.palette.primary.main,
-          color: theme.palette.primary.contrastText,
           width: drawerWidth,
           boxSizing: 'border-box',
         },
@@ -77,13 +78,7 @@ const AppDrawer = ({ isOpen }: Props) => {
       open={isOpen}
     >
       <DrawerHeader>
-        {/* <IconButton onClick={handleDrawerClose}>
-          {theme.direction === 'ltr' ? (
-            <ChevronLeftIcon />
-          ) : (
-            <ChevronRightIcon />
-          )}
-        </IconButton> */}
+        <img src={memoryBoxLogo} className='logo' alt='logo' width={100} />
       </DrawerHeader>
       <Divider />
       <List>
