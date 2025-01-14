@@ -24,8 +24,6 @@ const MilestonesList = ({ searchTerm, milestones }: Props) => {
   const hasMilestones = milestones.length !== 0
   const isEmpty = searchedMilestones.length === 0
 
-  console.log('Milestone rendered in list:', milestones)
-
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {hasMilestones && isEmpty ? (
