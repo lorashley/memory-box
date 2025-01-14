@@ -2,23 +2,17 @@ import { Box, Divider, List, ListItemText, Typography } from '@mui/material'
 import { Fragment } from 'react'
 import { Milestone } from '../Milestone/types'
 import { StyledListItem } from './styled'
-import useMilestones from './hooks/useMilestones'
 import Tag from '../Tag'
 import FavoriteHeart from '../FavoriteHeart'
+import { useMilestonesContext } from './MilestonesProvider'
 
 type Props = {
   searchTerm: string | null
-  selectedMilestoneId: string | null
-  setSelectedMilestone: (milestone: Milestone) => void
+  milestones: Milestone[]
 }
 
-const MilestonesList = ({
-  searchTerm,
-  selectedMilestoneId,
-  setSelectedMilestone,
-}: Props) => {
-  const { milestones } = useMilestones()
-
+const MilestonesList = ({ searchTerm, milestones }: Props) => {
+  const { selectedMilestoneId, setSelectedMilestoneId } = useMilestonesContext()
   const searchedMilestones = searchTerm
     ? milestones.filter(
         (milestone) =>
@@ -30,6 +24,8 @@ const MilestonesList = ({
   const hasMilestones = milestones.length !== 0
   const isEmpty = searchedMilestones.length === 0
 
+  console.log('Milestone rendered in list:', milestones)
+
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {hasMilestones && isEmpty ? (
@@ -40,13 +36,13 @@ const MilestonesList = ({
             <Fragment key={index}>
               <StyledListItem
                 alignItems='flex-start'
-                onClick={() => setSelectedMilestone(milestone)}
-                isSelected={selectedMilestoneId === milestone.id}
+                onClick={() => setSelectedMilestoneId(milestone.id)}
+                $isSelected={selectedMilestoneId === milestone.id}
               >
                 <ListItemText
                   primary={
                     <>
-                      {milestone.isFavorite && <FavoriteHeart />}
+                      {milestone.isFavorite && <FavoriteHeart isFavorite />}
                       <div>{milestone.title}</div>
                       <Typography
                         component='span'
@@ -66,11 +62,12 @@ const MilestonesList = ({
                       justifyContent: 'space-between',
                       display: 'flex',
                       flexDirection: 'row',
+                      minWidth: 300,
                     },
                     secondary: {
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: 0.5,
+                      gap: 1,
                     },
                   }}
                   secondary={

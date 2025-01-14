@@ -7,15 +7,9 @@ import Header from '../components/Header'
 type Props = {
   isOpen: boolean
   openDrawer: () => void
-  setSelectedMilestone: (milestone: Milestone) => void
-  selectedMilestoneId: string | null
+  milestones: Milestone[]
 }
-const MainColumn = ({
-  isOpen,
-  openDrawer,
-  setSelectedMilestone,
-  selectedMilestoneId,
-}: Props) => {
+const MainColumn = ({ isOpen, openDrawer, milestones }: Props) => {
   const [searchTerm, _setSearchTerm] = useState<string | null>(null)
   const setSearchTerm = useCallback(
     (searchTerm: string) => {
@@ -28,7 +22,6 @@ const MainColumn = ({
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        width: '100%',
         height: '100vh',
         alignContent: 'flex-start',
         borderRight: '1px solid rgba(0, 0, 0, 0.12)',
@@ -39,11 +32,7 @@ const MainColumn = ({
         handleDrawerOpen={openDrawer}
         isOpen={isOpen}
       />
-      <MilestonesList
-        searchTerm={searchTerm}
-        selectedMilestoneId={selectedMilestoneId}
-        setSelectedMilestone={setSelectedMilestone}
-      />
+      <MilestonesList milestones={milestones} searchTerm={searchTerm} />
     </Box>
   )
 }

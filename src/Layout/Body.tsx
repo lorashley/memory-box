@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
-import { useState } from 'react'
-import { Milestone } from '../components/Milestone/types'
+import { useMemo } from 'react'
 import MilestoneDetails from '../components/Milestone'
 import MainColumn from './MainColumn'
+import { useMilestonesContext } from '../components/Milestones/MilestonesProvider'
 
 type Props = {
   isOpen: boolean
@@ -10,9 +10,13 @@ type Props = {
 }
 
 const Body = ({ isOpen, openDrawer }: Props) => {
-  const [selectedMilestone, setSelectedMilestone] = useState<Milestone | null>(
-    null,
+  const { milestones, selectedMilestoneId } = useMilestonesContext()
+
+  const selectedMilestone = useMemo(
+    () => milestones.find((milestone) => milestone.id === selectedMilestoneId),
+    [milestones, selectedMilestoneId],
   )
+
   return (
     <>
       <Box
@@ -24,13 +28,12 @@ const Body = ({ isOpen, openDrawer }: Props) => {
         }}
       >
         <MainColumn
-          selectedMilestoneId={selectedMilestone?.id || null}
-          setSelectedMilestone={setSelectedMilestone}
           isOpen={isOpen}
           openDrawer={openDrawer}
+          milestones={milestones}
         />
 
-        <MilestoneDetails milestone={selectedMilestone} />
+        <MilestoneDetails milestone={selectedMilestone ?? null} />
       </Box>
     </>
   )

@@ -85,13 +85,13 @@ const AppDrawer = ({ isOpen }: Props) => {
       <Divider />
       <List>
         {MAIN_CATEGORIES.map(({ title, icon }) => (
-          <ListGroup title={title} icon={icon} />
+          <ListGroup title={title} icon={icon} key={title} />
         ))}
       </List>
       <Divider />
       <List>
         {SECONDARY_CATEGORIES.map(({ title, icon }) => (
-          <ListGroup title={title} icon={icon} />
+          <ListGroup title={title} icon={icon} key={title} />
         ))}
       </List>
     </Drawer>
