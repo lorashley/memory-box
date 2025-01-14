@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles'
+import { styled, useTheme } from '@mui/material/styles'
 import Drawer from '@mui/material/Drawer'
 import { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 import List from '@mui/material/List'
@@ -59,12 +59,15 @@ const ListGroup = ({ title, icon }: ListGroupProps) => (
 )
 
 const AppDrawer = ({ isOpen }: Props) => {
+  const theme = useTheme()
   return (
     <Drawer
       sx={{
         width: drawerWidth,
         flexShrink: 0,
         '& .MuiDrawer-paper': {
+          backgroundColor: theme.palette.primary.main,
+          color: theme.palette.primary.contrastText,
           width: drawerWidth,
           boxSizing: 'border-box',
         },
