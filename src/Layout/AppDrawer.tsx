@@ -17,6 +17,9 @@ import PoolIcon from '@mui/icons-material/Pool'
 import SchoolIcon from '@mui/icons-material/School'
 
 import memoryBoxLogo from '../assets/Logo.svg'
+import { Add } from '@mui/icons-material'
+import useSwitch from '../hooks/useSwitch'
+import AddMilestoneModal from '../components/Milestone/AddMilestoneModal'
 export const drawerWidth = 240
 
 interface Props extends MuiAppBarProps {
@@ -50,9 +53,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 type ListGroupProps = {
   title: string
   icon: React.ReactNode
+  onClick?: () => void
 }
-const ListGroup = ({ title, icon }: ListGroupProps) => (
-  <ListItem key={title} disablePadding>
+const ListGroup = ({ title, icon, onClick }: ListGroupProps) => (
+  <ListItem key={title} disablePadding onClick={onClick}>
     <ListItemButton>
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText primary={title} />
@@ -62,6 +66,7 @@ const ListGroup = ({ title, icon }: ListGroupProps) => (
 
 const AppDrawer = ({ isOpen }: Props) => {
   const theme = useTheme()
+  const [isAddMilestoneModalOpen, openModal, closeModal] = useSwitch(false)
   return (
     <Drawer
       sx={{
@@ -81,6 +86,8 @@ const AppDrawer = ({ isOpen }: Props) => {
         <img src={memoryBoxLogo} className='logo' alt='logo' width={100} />
       </DrawerHeader>
       <Divider />
+      <ListGroup title={'Add milestone'} icon={<Add />} onClick={openModal} />
+      <Divider />
       <List>
         {MAIN_CATEGORIES.map(({ title, icon }) => (
           <ListGroup title={title} icon={icon} key={title} />
@@ -92,6 +99,7 @@ const AppDrawer = ({ isOpen }: Props) => {
           <ListGroup title={title} icon={icon} key={title} />
         ))}
       </List>
+      {isAddMilestoneModalOpen && <AddMilestoneModal onClose={closeModal} />}
     </Drawer>
   )
 }
