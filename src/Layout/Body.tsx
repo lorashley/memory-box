@@ -24,6 +24,7 @@ const Body = ({ isOpen, openDrawer }: Props) => {
           display: 'flex',
           flexDirection: 'row',
           width: '100%',
+          height: '100vh',
           alignContent: 'flex-start',
         }}
       >

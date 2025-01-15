@@ -38,4 +38,18 @@ export const MILESTONES: Milestone[] = [
     description: 'First day of kindergarten!',
     tags: [Tag.FIRST, Tag.SCHOOL],
   },
+  {
+    id: '6',
+    title: 'Lost two front teeth',
+    date: '2035-03-20',
+    description: 'Put them under the pillow and got $5 from the tooth fairy!',
+    tags: [Tag.FUNNY, Tag.PHYSICAL],
+  },
+  {
+    id: '7',
+    title: 'Counted to 30',
+    date: '2035-07-15',
+    description: 'Counted to 30, and instead of saying 29, 20-10, said 30!',
+    tags: [Tag.FUNNY, Tag.LANGUAGE],
+  },
 ]

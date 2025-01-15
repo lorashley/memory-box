@@ -60,12 +60,15 @@ const MilestonesList = ({ searchTerm, milestones }: Props) => {
                       justifyContent: 'space-between',
                       display: 'flex',
                       flexDirection: 'row',
-                      minWidth: 300,
+                      gap: 3,
+                      noWrap: true,
+                      textOverflow: 'ellipsis',
                     },
                     secondary: {
                       display: 'flex',
                       flexDirection: 'column',
                       gap: 1,
+                      textOverflow: 'ellipsis',
                     },
                   }}
                   secondary={

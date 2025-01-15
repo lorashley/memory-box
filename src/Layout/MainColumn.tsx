@@ -22,9 +22,11 @@ const MainColumn = ({ isOpen, openDrawer, milestones }: Props) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
+        width: '600px',
         height: '100vh',
         alignContent: 'flex-start',
         borderRight: '1px solid rgba(0, 0, 0, 0.12)',
+        overflow: 'auto',
       }}
     >
       <Header

@@ -1,28 +1,5 @@
 import { alpha, styled } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
-// import { drawerWidth } from '../../Layout/AppDrawer'
-
-// const AppBar = styled(MuiAppBar, {
-//     shouldForwardProp: (prop) => prop !== 'isOpen',
-//   })<AppBarProps>(({ theme }) => ({
-//     transition: theme.transitions.create(['margin', 'width'], {
-//       easing: theme.transitions.easing.sharp,
-//       duration: theme.transitions.duration.leavingScreen,
-//     }),
-//     variants: [
-//       {
-//         props: ({ isOpen }) => isOpen,
-//         style: {
-//           width: `calc(100% - ${drawerWidth}px)`,
-//           marginLeft: `${drawerWidth}px`,
-//           transition: theme.transitions.create(['margin', 'width'], {
-//             easing: theme.transitions.easing.easeOut,
-//             duration: theme.transitions.duration.enteringScreen,
-//           }),
-//         },
-//       },
-//     ],
-//   }))
 
 export const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -34,10 +11,6 @@ export const Search = styled('div')(({ theme }) => ({
   },
   marginLeft: 0,
   width: '100%',
-  //   [theme.breakpoints.up('sm')]: {
-  //     marginLeft: theme.spacing(1),
-  //     width: 'auto',
-  //   },
 }))
 
 export const SearchIconWrapper = styled('div')(({ theme }) => ({

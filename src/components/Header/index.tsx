@@ -12,7 +12,14 @@ type Props = {
 
 const Header = ({ setSearchTerm, handleDrawerOpen, isOpen }: Props) => {
   return (
-    <Toolbar>
+    <Toolbar
+      sx={{
+        position: 'sticky', // Makes the header stick at the top
+        top: 0, // Keeps it at the top of the container
+        zIndex: 1, // Ensures it remains above scrolling content
+        backgroundColor: 'background.default', // Prevents overlapping content from showing through
+      }}
+    >
       {!isOpen && (
         <IconButton
           size='large'

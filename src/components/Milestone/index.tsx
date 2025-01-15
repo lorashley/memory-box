@@ -29,6 +29,7 @@ const Milestone = ({ milestone }: Props) => {
         pl: 4,
         pt: 6,
         alignContent: 'flex-start',
+        overflow: 'hidden',
       }}
     >
       {milestone ? (
